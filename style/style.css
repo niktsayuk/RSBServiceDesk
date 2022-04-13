@@ -1,0 +1,31 @@
+@import url('http://fonts.cdnfonts.com/css/bahnschrift');
+
+*{
+    font-family: 'Bahnschrift', sans-serif;
+}
+
+.bg-gray{
+    background-color: silver;
+}
+
+.bg-green {
+    background-color: #83B143;
+}
+
+.btn-green {
+    color: #83B143;
+    border: 1px solid #83B143;
+}
+
+.text-green
+{
+    color: #83B143;
+}
+
+.round {
+    width: 10px;
+    height: 10px;
+    border: 2px solid red;
+    border-radius: 50%;
+    background: red;
+  }
