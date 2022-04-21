@@ -24,7 +24,7 @@
         <main class="container" style="width: 1200px;">
             <div class="bg-white my-5 p-5 rounded">
                 <h2 class="my-5 text-center">Авторизация</h2>
-                <form action="signin.php" method="post" enctype="multipart/form-data" class="needs-validation" novalidate>
+                <form action="vendor/signin.php" method="post" enctype="multipart/form-data" class="needs-validation" novalidate>
                     <div class="mt-3 text-center">
                         <label class="form-label">Логин</label> 
                         <input class="form-control" type="text" name="login" >

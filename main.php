@@ -19,13 +19,13 @@
         <div class="container d-flex justify-content-between align-items-center">
             <img src="img/logo_whte.png" class="m-3">
             <div class="d-flex">
-              <a href="logout.php" class="btn btn-outline-light me-3">Выйти</a>
+              <a href="vendor/logout.php" class="btn btn-outline-light me-3">Выйти</a>
               <h6 class="text-white mt-3"> <?= $_SESSION['user']['name'] ?> </h6>
             </div>
         </div>
     </footer>
 
-    <main class="container" style="width: 1200px;">
+    <main class="container">
         <div class="bg-white my-5 p-5 rounded">
             <div class="d-flex justify-content-between">
                 <div class="d-flex">

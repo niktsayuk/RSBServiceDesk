@@ -1,5 +1,4 @@
 <?php
-
     session_start();
     require_once 'connect.php';
 
@@ -20,10 +19,10 @@
             "profile" =>$user['name']
         ];
 
-        header('Location: main.php');
+        header('Location: ../main.php');
 
     } else {
         $_SESSION['message'] = 'Неверный логин или пароль';
-        header('Location: index.php');
+        header('Location: ../index.php');
     }
     ?>
