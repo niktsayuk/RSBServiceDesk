@@ -1,14 +1,21 @@
 <?php
     session_start();
     require_once 'vendor/connect.php';
+    require_once 'vendor/data_sql.php';
 ?>
 
 <div>
-    <h3 class="mt-5">Список зарегистрированных пользователей</h3>
-
     <?php include('models/modal_register.php') ?>
 
-    <a class="btn rounded btn-green my-3" data-bs-toggle="modal" data-bs-target="#add">Добавить</a>
+    <div class="d-flex my-3">
+        <a class="btn rounded btn-green mx-2" data-bs-toggle="modal" data-bs-target="#add_worker">Добавить сотрудника</a>
+        <a class="btn rounded btn-green mx-2" data-bs-toggle="modal" data-bs-target="#add_city">Добавить город</a>
+        <a class="btn rounded btn-green mx-2" data-bs-toggle="modal" data-bs-target="#add_categories">Добавить категории</a>
+        <a class="btn rounded btn-green mx-2" data-bs-toggle="modal" data-bs-target="#add_categories">Добавить новость</a>
+    </div>
+    
+    <h4 class="mt-5">Список зарегистрированных сотрудников</h4>
+
     <?php
         if (isset($_SESSION['message'])) {
             echo '<p class="msg text-center text-green pt-3"> '.$_SESSION['message'].' </p>';
@@ -29,8 +36,7 @@
         </thead>
         <tbody>
             <?php 
-                $list_user = mysqli_query($connect, "SELECT users.*, profile.name
-                                        FROM `users` JOIN `profile` ON users.id_profile=profile.id");
+                $list_user = mysqli_query($connect, $sa_user_to_id_profile);
 
                 while($user = mysqli_fetch_assoc($list_user))
                     echo '<tr>

@@ -14,7 +14,7 @@
                             <label class="form-label">Профиль пользователя</label> 
                             <select class="form-select" aria-label="Пример выбора по умолчанию" name="profile">
                             <?php 
-                                $list_profile = mysqli_query($connect, "SELECT * FROM `profile`");
+                                $list_profile = mysqli_query($connect, $all_profile);
 
                                 while($prof = mysqli_fetch_assoc($list_profile))
                                     echo '<option value="'.$prof['id'].'">'.$prof['name'].'</option>';
