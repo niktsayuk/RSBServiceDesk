@@ -1,4 +1,4 @@
-<div class="modal fade " id="add" tabindex="-1" aria-bs-labelledby="busketLabel" aria-bs-hidden="true">
+<div class="modal fade " id="add_worker" tabindex="-1" aria-bs-labelledby="busketLabel" aria-bs-hidden="true">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
@@ -42,7 +42,7 @@
                             <input class="form-control" type="text" name="phone">
                         </div>
 
-                            <button type="submit" class="btn bg-green rounded text-white px-3 mt-3">Войти</button>
+                            <button type="submit" class="btn bg-green rounded text-white px-3 mt-3">Зарегистрировать</button>
                     </form>
                 </div>
             </div>

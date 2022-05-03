@@ -9,8 +9,10 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 
 		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-		<link href="style/style.css" rel="stylesheet">
+    <link href="style/style.css" rel="stylesheet">
         <link href="http://fonts.cdnfonts.com/css/bahnschrift" rel="stylesheet">
+        <link href="style/toast.min.css" rel="stylesheet">
+        <script src="style/toast.min.js"></script>
         <title>POS Service Desk</title>
 	</head>
 
@@ -26,8 +28,8 @@
     </footer>
 
     <main class="container">
-        <div class="bg-white my-5 p-5 rounded">
-            <div class="d-flex justify-content-between">
+        <div class="my-5 rounded">
+            <div class="d-flex bg-white p-3 justify-content-between">
                 <div class="d-flex">
                     <h2>РП Хабаровск</h2>
                     <button class="btn rounded text-green px-3">изменить</button>
@@ -36,7 +38,7 @@
                 <div>
                     <h5>Профиль пользователя: <?= $_SESSION['user']['profile'] ?></h5>
                 </div>
-            </div><hr>
+            </div>
 
             <?php
               switch($_SESSION['user']['id_profile'])
@@ -53,6 +55,7 @@
                   include('models/MPTO.php');
                   break;
               }
+              unset($_SESSION['message']);
             ?>
         </div>
     </main>

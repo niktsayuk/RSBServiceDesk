@@ -12,5 +12,5 @@
                                         VALUES ('$profile','$full_name','$login','$password','$phone')");
 
     $_SESSION['message'] = 'Регистрация прошла успешно!';
-     header('Location: ../main.php');
+     header('Location: ../main.php?send');
 ?>
