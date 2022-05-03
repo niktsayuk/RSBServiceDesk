@@ -4,7 +4,13 @@
 
     $id_action = $_POST['ID'];
 
-    $sql = "DELETE FROM news WHERE id='$id_action'";
-    mysqli_query($connect, $sql);
-    header('Location: ../admin.php');
+    try{
+        mysqli_query($connect, "DELETE FROM news WHERE id='$id_action'");
+        $_SESSION['message'] = 'Новость успешно удалена!';
+    }
+    catch (Exception)
+    {
+        $_SESSION['message'] = 'Не удалось удалить новость!';  
+    }
+    header('Location: ../main.php?send');
 ?>

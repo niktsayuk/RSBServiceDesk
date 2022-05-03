@@ -6,8 +6,16 @@
     $description = $_POST['description'];
     $date = date("j, n, Y");
 
-   mysqli_query($connect, "INSERT INTO `news` (`title`, `description`, `date`) VALUES ('$title', '$description', '$date')");
+    try
+    {
+        mysqli_query($connect, "INSERT INTO `news` (`title`, `description`, `date`) VALUES ('$title', '$description', '$date')");
+        $_SESSION['message'] = 'Новость успешно опублинована!';
+    }
+    catch (Exception)
+    {
+            $_SESSION['message'] = 'Не удалось опубликовать новость!';
+    }
 
-    $_SESSION['message'] = 'Новость успешно опублинована!';
+   
     header('Location: ../main.php?send');
 ?>

@@ -4,7 +4,12 @@
 
     $id = $_POST['ID'];
 
-    $sql = "DELETE FROM users WHERE id='$id'";
-    mysqli_query($connect, $sql);
-    header('Location: ../main.php');
+    try {
+        mysqli_query($connect, "DELETE FROM users WHERE id='$id'");
+        $_SESSION['message'] = 'Пользователь успешно удален!';
+    }
+    catch (Exception) {
+        $_SESSION['message'] = 'Не удалось удалить пользователя!';
+    }
+    header('Location: ../main.php?send');
 ?>

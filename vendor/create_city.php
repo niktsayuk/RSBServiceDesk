@@ -5,11 +5,15 @@
     $region_center = $_POST['RC'];
     $region_city = $_POST['RP'];
 
-    if(mysqli_query($connect, "INSERT INTO `city` (`region_center`, `region_city`) VALUES ('$region_center','$region_city')"))
-        $_SESSION['message'] = 'Данные успешно добавлены!';    
-    else
-        $_SESSION['message'] = 'Данные не добавлены!';
-
+    try
+    {
+        mysqli_query($connect, "INSERT INTO `city` (`region_center`, `region_city`) VALUES ('$region_center','$region_city')");
+        $_SESSION['message'] = 'Город успешно добавлен!'; 
+    }
+    catch (Exception)
+    {   
+        $_SESSION['message'] = 'Не удалось добавить город!';
+    }
     
     header('Location: ../main.php?send');
     

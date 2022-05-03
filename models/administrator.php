@@ -70,7 +70,7 @@
     <div class="bg-white p-3 mt-3">
         <h4 class="mt-3">Новости платформы</h4>
 
-        <table class="table table-borderless" style="border: 2px solid silver; padding: 10px; width:100%;word-break: break-all;table-layout: fixed">
+        <table class="table table-borderless">
                     <thead>
                         <tr>
                             <th scope="col" >Номер</th>
