@@ -8,7 +8,7 @@
 
                 <div class="modal-body text-center">
 
-                    <form action="vendor/create_city.php" method="post" enctype="multipart/form-data" class="needs-validation" novalidate>
+                    <form action="vendor/add_city.php" method="post" enctype="multipart/form-data" class="needs-validation" novalidate>
 
                         <div class="mt-2 text-center">
                             <label class="form-label">РЦ (Регион)</label> 

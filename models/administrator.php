@@ -5,10 +5,9 @@
 ?>
 
 <div>
-	<?php include('models/modal_register.php') ?>
-	<?php include('models/modal_city.php') ?>
-	<?php include('models/modal_news.php') ?>
-	<?php include('models/modal_select_city.php') ?>
+	<?php include('models/modal/add_worker.php') ?>
+	<?php include('models/modal/add_city.php') ?>
+	<?php include('models/modal/add_news.php') ?>
 	<?php 
 		if(isset($_GET['send']) && isset( $_SESSION['message'])) 
 			echo "<script> new Tost({
@@ -43,6 +42,7 @@
 								<th scope="col">Номер</th>
 								<th scope="col">Профиль</th>
 								<th scope="col">ФИО</th>
+								<th scope="col">Город</th>
 								<th scope="col">Логин</th>
 								<th scope="col">Пароль</th>
 								<th scope="col">Телефон</th>
@@ -58,6 +58,7 @@
 											<td>'.$user['id'].'</td>
 											<td>'.$user['name'].'</td>
 											<td>'.$user['full_name'].'</td>
+											<td>'.$user['region_city'].'</td>
 											<td>'.$user['login'].'</td>
 											<td>'.$user['password'].'</td>
 											<td>'.$user['phone'].'</td>
@@ -91,27 +92,27 @@
 								<th scope="col">Номер</th>
 								<th scope="col">Профиль</th>
 								<th scope="col">ФИО</th>
+								<th scope="col">Город</th>
 								<th scope="col">Логин</th>
-								<th scope="col">Пароль</th>
 								<th scope="col">Телефон</th>
 								<th scope="col">Действие</th>
 							</tr>
 						</thead>
 						<tbody>
 							<?php 
-								$list_user = mysqli_query($connect, $_SELECT_USER_PROFILE);
+								$list_client = mysqli_query($connect, $_SELECT_CLIENT_PROFILE);
 
-								while($user = mysqli_fetch_assoc($list_user))
+								while($client = mysqli_fetch_assoc($list_client))
 									echo '<tr>
-											<td>'.$user['id'].'</td>
-											<td>'.$user['name'].'</td>
-											<td>'.$user['full_name'].'</td>
-											<td>'.$user['login'].'</td>
-											<td>'.$user['password'].'</td>
-											<td>'.$user['phone'].'</td>
+											<td>'.$client['id'].'</td>
+											<td>'.$client['name'].'</td>
+											<td>'.$client['full_name'].'</td>
+											<td>'.$client['region_city'].'</td>
+											<td>'.$client['login'].'</td>
+											<td>'.$client['phone'].'</td>
 											<td>
 												<form action="vendor/delete_user.php" method="post">
-													<input type="hidden" name="ID" value="'.$user['id'].'">
+													<input type="hidden" name="ID" value="'.$client['id'].'">
 													<button type="submit" class=" btn btn-outline-danger"> Удалить </button>
 												</form>
 											</td>
