@@ -16,5 +16,4 @@
     }
     
     header('Location: ../main.php?send');
-    
 ?>

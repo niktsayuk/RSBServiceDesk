@@ -13,6 +13,7 @@
         <link href="http://fonts.cdnfonts.com/css/bahnschrift" rel="stylesheet">
         <link href="style/toast.min.css" rel="stylesheet">
         <script src="style/toast.min.js"></script>
+        <script src="style/main.js"></script>
         <title>POS Service Desk</title>
 	</head>
 
@@ -31,8 +32,7 @@
         <div class="my-5 rounded">
             <div class="d-flex bg-white p-3 justify-content-between">
                 <div class="d-flex">
-                    <h2>РП Хабаровск</h2>
-                    <button class="btn rounded text-green px-3">изменить</button>
+                    <h2 id="title"> РП <?= $_SESSION['user']['city'] ?></h2>
                 </div>
                 
                 <div>

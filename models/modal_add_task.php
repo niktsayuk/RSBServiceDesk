@@ -1,8 +1,8 @@
-<div class="modal fade " id="add_worker" tabindex="-1" aria-bs-labelledby="busketLabel" aria-bs-hidden="true">
+<div class="modal fade " id="add_task" tabindex="-1" aria-bs-labelledby="busketLabel" aria-bs-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title" id="noWorkLabel">Регистрация нового пользователя</h4>
+                <h4 class="modal-title" id="noWorkLabel">Создание новой заявки</h4>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
 
@@ -18,18 +18,6 @@
 
                             while($prof = mysqli_fetch_assoc($list_profile))
                                 echo '<option value="'.$prof['id'].'">'.$prof['name'].'</option>';
-                        ?>
-                        </select>
-                    </div>
-
-                    <div class="mt-1 text-center">
-                        <label class="form-label">Город</label> 
-                        <select class="form-select" aria-label="Пример выбора по умолчанию" name="profile">
-                        <?php 
-                            $list_city = mysqli_query($connect, $all_city);
-
-                            while($city = mysqli_fetch_assoc($list_city))
-                                echo '<option value="'.$city['id'].'">'.$city['region_city'].'</option>';
                         ?>
                         </select>
                     </div>

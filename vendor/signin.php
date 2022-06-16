@@ -6,7 +6,10 @@
     $login = $_POST['login'];
     $password = $_POST['password'];
 
-    $check_user = mysqli_query($connect, "SELECT users.id, users.full_name, users.id_profile, profile.name FROM `users` RIGHT JOIN `profile` ON users.id_profile=profile.id WHERE `login` = '$login' AND `password` = '$password'");
+    $check_user = mysqli_query($connect, "SELECT users.id, users.full_name, users.id_profile, profile.name, city.region_city FROM `users` 
+                                        JOIN `profile` ON users.id_profile=profile.id 
+                                        JOIN `city` ON users.id_city=city.id 
+                                        WHERE `login` = '$login' AND `password` = '$password'");
 
     if (mysqli_num_rows($check_user) > 0) 
     {
@@ -16,7 +19,8 @@
             "id_user" => $user['id'],
             "id_profile" => $user['id_profile'],
             "name" => $user['full_name'],
-            "profile" =>$user['name']
+            "profile" => $user['name'],
+            "city" => $user['region_city']
         ];
 
         header('Location: ../main.php');
