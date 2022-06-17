@@ -7,7 +7,7 @@
 
     try
     {
-        mysqli_query($connect, "INSERT INTO `city` (`region_center`, `region_city`) VALUES ('$region_center','$region_city')");
+        mysqli_query($connect, "INSERT INTO `city` (`id`, `region_center`, `region_city`) VALUES (NULL, '$region_center','$region_city')");
         $_SESSION['message'] = 'Город успешно добавлен!'; 
     }
     catch (Exception)

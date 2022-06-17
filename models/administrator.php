@@ -1,26 +1,7 @@
-<?php
-	session_start();
-	require_once 'vendor/connect.php';
-	require_once 'vendor/data_sql.php';
-?>
-
 <div>
-	<?php include('models/modal/add_worker.php') ?>
-	<?php include('models/modal/add_city.php') ?>
-	<?php include('models/modal/add_news.php') ?>
-	<?php 
-		if(isset($_GET['send']) && isset( $_SESSION['message'])) 
-			echo "<script> new Tost({
-				title: false,
-				text: '".$_SESSION['message']."',
-				theme: 'light',
-				autohide: true,
-				interval: 5000
-			  }); </script>"; 
-	?>
-
 	<div class="d-flex bg-white p-3 mb-3">
 		<a class="btn rounded btn-green mx-2" data-bs-toggle="modal" data-bs-target="#add_worker">Добавить сотрудника</a>
+		<a class="btn rounded btn-green mx-2" data-bs-toggle="modal" data-bs-target="#add_client">Добавить клиента</a>
 		<a class="btn rounded btn-green mx-2" data-bs-toggle="modal" data-bs-target="#add_city">Добавить город</a>
 		<a class="btn rounded btn-green mx-2" data-bs-toggle="modal" data-bs-target="#add_categories">Добавить категории</a>
 		<a class="btn rounded btn-green mx-2" data-bs-toggle="modal" data-bs-target="#add_news">Добавить новость</a>
@@ -44,7 +25,6 @@
 								<th scope="col">ФИО</th>
 								<th scope="col">Город</th>
 								<th scope="col">Логин</th>
-								<th scope="col">Пароль</th>
 								<th scope="col">Телефон</th>
 								<th scope="col">Действие</th>
 							</tr>
@@ -60,7 +40,6 @@
 											<td>'.$user['full_name'].'</td>
 											<td>'.$user['region_city'].'</td>
 											<td>'.$user['login'].'</td>
-											<td>'.$user['password'].'</td>
 											<td>'.$user['phone'].'</td>
 											<td>
 												<form action="vendor/delete_user.php" method="post">
@@ -69,9 +48,7 @@
 												</form>
 											</td>
 										</tr>';
-								
 							?>
-							
 						</tbody>
 					</table>
 				</div>
@@ -79,20 +56,20 @@
 		</div>
 
 		<div class="accordion-item mt-3">
-			<h1 class="accordion-header" id="headingTwo">
+			<h1 class="accordion-header" id="headingOne">
 				<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse2" aria-expanded="false" aria-controls="collapse2">
 					Список зарегистрированных клиентов
 				</button>
 			</h1>
-			<div id="collapse2" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+			<div id="collapse2" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
 				<div class="accordion-body">
 					<table class="table table-borderless">
 						<thead>
 							<tr>
 								<th scope="col">Номер</th>
-								<th scope="col">Профиль</th>
 								<th scope="col">ФИО</th>
 								<th scope="col">Город</th>
+								<th scope="col">Адрес</th>
 								<th scope="col">Логин</th>
 								<th scope="col">Телефон</th>
 								<th scope="col">Действие</th>
@@ -100,26 +77,24 @@
 						</thead>
 						<tbody>
 							<?php 
-								$list_client = mysqli_query($connect, $_SELECT_CLIENT_PROFILE);
+								$list_clients = mysqli_query($connect, $_SELECT_CLIENT_PROFILE);
 
-								while($client = mysqli_fetch_assoc($list_client))
+								while($clients = mysqli_fetch_assoc($list_clients))
 									echo '<tr>
-											<td>'.$client['id'].'</td>
-											<td>'.$client['name'].'</td>
-											<td>'.$client['full_name'].'</td>
-											<td>'.$client['region_city'].'</td>
-											<td>'.$client['login'].'</td>
-											<td>'.$client['phone'].'</td>
+											<td>'.$clients['id'].'</td>
+											<td>'.$clients['FIO'].'</td>
+											<td>'.$clients['region_city'].'</td>
+											<td>'.$clients['adress'].'</td>
+											<td>'.$clients['login'].'</td>
+											<td>'.$clients['phone'].'</td>
 											<td>
-												<form action="vendor/delete_user.php" method="post">
-													<input type="hidden" name="ID" value="'.$client['id'].'">
+												<form action="vendor/delete_clients.php" method="post">
+													<input type="hidden" name="ID" value="'.$clients['id'].'">
 													<button type="submit" class=" btn btn-outline-danger"> Удалить </button>
 												</form>
 											</td>
 										</tr>';
-								
 							?>
-							
 						</tbody>
 					</table>
 				</div>

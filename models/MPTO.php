@@ -5,55 +5,43 @@
 ?>
 
 <div class="bg-white p-3">
-<? include('models/view_news.php'); ?>
     <a href="" class="btn rounded btn-green mb-5" data-bs-toggle="modal" data-bs-target="#add_task">Cоздать заявку</a>
-    <a class="btn btn-primary" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
-        Link with href
-    </a>
-    <h3>Активные заявки</h3>
+
     <table class="table table-borderless">
         <thead>
             <tr>
-                <th scope="col">ID заявки</th>
+                <th scope="col">Номер</th>
+                <th scope="col">Категория</th>
                 <th scope="col">ID терминала</th>
-                <th scope="col">Дата создания</th>
-                <th scope="col">Ответственный</th>
-                <th scope="col">Дата изменения</th>
-                <th scope="col">Автор изменения</th>
+                <th scope="col" style="width:15%">Описание</th>
+                <th scope="col">Дата</th>
+                <th scope="col">Обработка</th>
             </tr>
         </thead>
-   
-        <?php
-            $today = date("m.d.y");  
-            $list_task = mysqli_query($connect, "SELECT task.id_categories, categories.*
-                                        FROM `task` RIGHT JOIN `categories` ON task.id_categories=categories.id");
-            while($task = mysqli_fetch_assoc($list_task))
-            {
-                if($task['id_categories']==$task['id'])
-                    echo '<h4 class="mt-5">'.$task['name'].'</h4>';
-                
-                
-                $list_task_second = mysqli_query($connect, "SELECT task.*, users.full_name
-                            FROM `task` RIGHT JOIN `users` ON task.id_user=users.id");
-
-                while($task_second = mysqli_fetch_assoc($list_task_second))
-                {                    
-                    if($task_second['id_categories'] == $task['id'])
+        <tbody>
+            <?php 
+                    $list_task1 = mysqli_query($connect, "SELECT task.*, categories.name FROM `task` JOIN `categories` ON task.id_categories=categories.id");
+                if (mysqli_num_rows($list_task1) > 0)
+                while($task2 = mysqli_fetch_assoc($list_task1))
                     {
-                        echo '<tbody>
-                                    <tr>
-                                        <td>'.$task_second['id'].'</td>
-                                        <td>'.$task_second['terminal_id'].'</td>
-                                        <td>'.$today.'</td>
-                                        <td>Цаюк Н. С.</td>
-                                        <td>'.$today.'</td>
-                                        <td>'.$task_second['full_name'].'</td>
-                                    </tr>
-                                </tbody>
-                            ';
-                    } 
-                }
-            }
-        ?>
-        </table>
+                        echo '<tr>
+                        <td>'.$task2['id'].'</td>
+                        <td>'.$task2['name'].'</td>
+                        <td>'.$task2['id_terminal'].'</td>
+                        <td>'.$task2['description'].'</td>
+                        <td>'.$task2['date'].'</td>
+                        <td>В работе</td>
+                        
+                    </tr>';
+                    }  
+                    else
+                    {
+                    
+            ?>
+        </tbody>
+    </table>
+    <?php
+    echo '<h2 class="text-center pt-3" style="color: silver"> Тут пока что нет заявок </h2>';
+}
+    ?>
 </div>

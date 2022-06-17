@@ -12,11 +12,11 @@
                     
                     <div class="mt-1 text-center">
                         <label class="form-label">Профиль пользователя</label> 
-                        <select class="form-select" aria-label="Пример выбора по умолчанию" name="profile">
+                        <select class="form-select" name="profile">
                         <?php 
-                            $list_profile = mysqli_query($connect, $all_profile);
+                            $list_profile1 = mysqli_query($connect, "SELECT * FROM `profile`");
 
-                            while($prof = mysqli_fetch_assoc($list_profile))
+                            while($prof = mysqli_fetch_assoc($list_profile1))
                                 echo '<option value="'.$prof['id'].'">'.$prof['name'].'</option>';
                         ?>
                         </select>
@@ -24,12 +24,12 @@
 
                     <div class="mt-1 text-center">
                         <label class="form-label">Город</label> 
-                        <select class="form-select" aria-label="Пример выбора по умолчанию" name="profile">
+                        <select class="form-select" name="city">
                         <?php 
-                            $list_city = mysqli_query($connect, $all_city);
+                            $list_city1 = mysqli_query($connect, "SELECT * FROM `city`");
 
-                            while($city = mysqli_fetch_assoc($list_city))
-                                echo '<option value="'.$city['id'].'">'.$city['region_city'].'</option>';
+                            while($city2 = mysqli_fetch_assoc($list_city1))
+                                echo '<option value="'.$city2['id'].'">'.$city2['region_city'].'</option>';
                         ?>
                         </select>
                     </div>
